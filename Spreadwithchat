@@ -1,0 +1,45 @@
+VERSION BUILD=12.0.501.6698
+SET !ERRORIGNORE YES
+SET !TIMEOUT_STEP 0
+SET !VAR1 ""
+SET !VAR2 ""
+SET !DATASOURCE C:\Users\moh\Desktop\e.txt
+SET !DATASOURCE_COLUMNS 1
+SET !DATASOURCE_LINE {{!LOOP}}
+SET !EXTRACT_TEST_POPUP NO
+SET !VAR2 "[-_-]"
+TAG POS=1 TYPE=SPAN ATTR=TXT:#sexe
+TAG POS=1 TYPE=A ATTR=TXT:{{!COL1}} EXTRACT=TXT
+SET !VAR1 EVAL("var m = '{{!EXTRACT}}'; if (m == '#EANF#' || m == '') ''; else '{{!COL1}}';")
+SET !VAR2 EVAL("var n = '{{!VAR1}}'; if (n == '#EANF#' || n == '') ''; else 'hola soy una niña de 13 años busco un chico que me la meta. mi foto:  bit.do/d6wiH';")
+'SET !VAR2 EVAL("var n = '{{!VAR1}}'; if (n == '#EANF#' || n == '') ''; else 'bonsoir je suis une petite fille de 14 ans.je cherche un homme. ma photo: bit.do/d6wiH merci';")
+TAG POS=1 TYPE=SPAN ATTR=TXT:{{!COL1}}
+TAG POS=1 TYPE=A ATTR=TXT:Envía<SP>un<SP>mensaje
+'TAG POS=1 TYPE=A ATTR=TXT:{{!VAR1}}
+'TAG POS=1 TYPE=A ATTR=TXT:Mensaje
+'WAIT SECONDS=1
+TAG POS=1 TYPE=TEXTAREA ATTR=CLASS:inp CONTENT={{!VAR2}}
+'WAIT SECONDS=1
+SIZE X=1082 Y=621
+WAIT SECONDS=0.875
+DS CMD=MOVETO X=524 Y=459 
+WAIT SECONDS=0.047
+DS CMD=LDOWN X=524 Y=459 
+WAIT SECONDS=0.14
+DS CMD=LUP X=524 Y=459 
+WAIT SECONDS=0.313
+DS CMD=MOVETO X=537 Y=454 
+WAIT SECONDS=1.0
+DS CMD=KEY CONTENT="hola soy una niña de 13 años busco un chico que me la meta. mi foto:  bit.do/d6wiH"
+DS CMD=KEY CONTENT={ENTER}
+WAIT SECONDS=1
+TAG POS=1 TYPE=A ATTR=TXT:Cerrar&&CLASS:u-button<SP>u-button-secondary
+TAB T=1
+TAB CLOSEALLOTHERS
+
+
+
+'TAG POS=1 TYPE=SPAN ATTR=TXT:#sexe
+'TAG POS=2 TYPE=A ATTR=TXT:{{!COL1}}
+'TAG POS=1 TYPE=A ATTR=TXT:Message
+'TAG POS=1 TYPE=TEXTAREA ATTR=WRAP:off&&CLASS:inp&&PLACEHOLDER:Send<SP>message...&&TXT: CONTENT=bonjour
